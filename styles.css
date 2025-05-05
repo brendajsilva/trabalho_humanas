@@ -6,11 +6,11 @@
 }
 
 :root {
-    --primary-color: #1e1e2f; /* Fundo principal mais moderno */
-    --secondary-color: #4cafef; /* Azul vibrante para destaques */
-    --text-color: #eaeaea; /* Texto claro */
-    --light-bg: #2a2a3d; /* Fundo secundário mais suave */
-    --transition: all 0.3s ease-in-out;
+    --primary-color: #181824;
+    --secondary-color: #00d4ff;
+    --text-color: #f1f1f1;
+    --light-bg: #23263a;
+    --transition: all 0.3s ease;
 }
 
 body {
@@ -116,13 +116,13 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(30, 30, 47, 0.8), rgba(30, 30, 47, 0.8)),
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                 url('images/hero-bg.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--text-color);
+    color: #fff;
     padding-top: 80px;
     position: relative;
 }
@@ -246,7 +246,7 @@ body {
     text-align: center;
     margin-top: 1rem;
     font-style: italic;
-    color: #f1f1f1; /* Alterado para um tom mais claro */
+    color: #ccc; /* Alterado de #666 para um tom mais claro */
 }
 
 /* Legado Section */
@@ -386,6 +386,7 @@ body {
 .gallery-overlay span {
     font-size: 0.9rem;
     opacity: 0.8;
+    color: #ccc; /* Alterado de cinza escuro para um tom mais claro */
 }
 
 /* Footer */
