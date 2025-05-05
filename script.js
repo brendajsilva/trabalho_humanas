@@ -253,3 +253,23 @@ window.addEventListener('scroll', animateTitles);
 
 // Inicializa a animação ao carregar a página
 animateTitles();
+
+// Animação para os itens de curiosidades
+const curiosidadeItems = document.querySelectorAll('.curiosidade-item');
+
+function animateCuriosidades() {
+    const windowHeight = window.innerHeight;
+
+    curiosidadeItems.forEach(item => {
+        const position = item.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            item.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateCuriosidades);
+
+// Inicializa a animação ao carregar a página
+animateCuriosidades();
