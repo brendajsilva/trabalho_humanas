@@ -617,3 +617,8 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Adicionado estilo para h3 */
+h3 {
+    color: #fff; /* Define a cor dos títulos h3 como branco */
+}
