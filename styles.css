@@ -246,7 +246,7 @@ body {
     text-align: center;
     margin-top: 1rem;
     font-style: italic;
-    color: #666;
+    color: #ccc; /* Alterado de #666 para um tom mais claro */
 }
 
 /* Legado Section */
