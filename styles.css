@@ -424,10 +424,6 @@ body {
 }
 
 .footer-section h3 {
-    font-size: 1.5rem;
-    color: var(--secondary-color); /* Destaque para os títulos */
-    margin-bottom: 1rem;
-    text-transform: uppercase;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;

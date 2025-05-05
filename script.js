@@ -212,3 +212,23 @@ window.addEventListener('scroll', animateFooter);
 
 // Inicializa a animação ao carregar a página
 animateFooter();
+
+// Animação para os títulos do rodapé
+const footerTitles = document.querySelectorAll('.footer-section h3');
+
+function animateFooterTitles() {
+    const windowHeight = window.innerHeight;
+
+    footerTitles.forEach(title => {
+        const position = title.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            title.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateFooterTitles);
+
+// Inicializa a animação ao carregar a página
+animateFooterTitles();
