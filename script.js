@@ -168,3 +168,27 @@ if (backToTop) {
         }
     });
 }
+
+// Animação para os itens da linha do tempo
+const timelineItems = document.querySelectorAll('.timeline-item');
+const timelineDots = document.querySelectorAll('.timeline-dot');
+
+function animateTimeline() {
+    const windowHeight = window.innerHeight;
+
+    timelineItems.forEach((item, index) => {
+        const position = item.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            item.classList.add('visible');
+            if (timelineDots[index]) {
+                timelineDots[index].classList.add('visible');
+            }
+        }
+    });
+}
+
+window.addEventListener('scroll', animateTimeline);
+
+// Inicializa a animação ao carregar a página
+animateTimeline();
