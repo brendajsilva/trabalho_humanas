@@ -29,16 +29,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const header = document.querySelector('.header');
 let lastScroll = 0;
 
-// Verifica se o header existe antes de adicionar o evento de scroll
 if (header) {
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
-        
+
         if (currentScroll <= 0) {
             header.classList.remove('scroll-up');
             return;
         }
-        
+
         if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
             // Scroll Down
             header.classList.remove('scroll-up');
@@ -95,9 +94,9 @@ document.querySelectorAll('.section').forEach(section => {
 
 // Fecha o menu ao clicar fora
 document.addEventListener('click', (e) => {
-    if (navMenu && navMenu.classList.contains('active') && 
-        e.target instanceof HTMLElement && 
-        !e.target.closest('.nav-menu') && 
+    if (navMenu && navMenu.classList.contains('active') &&
+        e.target instanceof HTMLElement &&
+        !e.target.closest('.nav-menu') &&
         !e.target.closest('.menu-mobile')) {
         navMenu.classList.remove('active');
     }
@@ -107,7 +106,7 @@ document.addEventListener('click', (e) => {
 const nomes = [
     'Eduardo',
     'Agatha',
-    'Guilheme',
+    'Guilherme',
     'Brenda',
     'Arthur Abruzini'
 ];
@@ -140,7 +139,9 @@ function typeNomes() {
     }
 }
 
-typeNomes();
+if (devNomes) {
+    typeNomes();
+}
 
 // Scroll reveal effect
 document.addEventListener('scroll', function () {
@@ -154,3 +155,16 @@ document.addEventListener('scroll', function () {
         }
     });
 });
+
+// Back to Top Visibility
+const backToTop = document.querySelector('.back-to-top');
+
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+}
