@@ -550,6 +550,86 @@ body {
     left: 25px;
 }
 
+/* Punho cerrado (representa resistência) */
+.curiosidade-icon.fist {
+    width: 40px;
+    height: 60px;
+    background-color: var(--secondary-color);
+    position: relative;
+    border-radius: 5px;
+}
+
+.curiosidade-icon.fist::before,
+.curiosidade-icon.fist::after {
+    content: '';
+    position: absolute;
+    background-color: var(--secondary-color);
+    width: 12px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.curiosidade-icon.fist::before {
+    top: -20px;
+    left: 0;
+}
+
+.curiosidade-icon.fist::after {
+    top: -20px;
+    right: 0;
+}
+
+/* Símbolo feminino (representa força feminina) */
+.curiosidade-icon.female-symbol {
+    width: 40px;
+    height: 40px;
+    border: 5px solid var(--secondary-color);
+    border-radius: 50%;
+    position: relative;
+}
+
+.curiosidade-icon.female-symbol::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: var(--secondary-color);
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Tambor (representa cultura e celebração) */
+.curiosidade-icon.drum {
+    width: 60px;
+    height: 40px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    position: relative;
+}
+
+.curiosidade-icon.drum::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 10px;
+    background-color: var(--primary-color);
+    top: -10px;
+    left: 0;
+    border-radius: 50%;
+}
+
+.curiosidade-icon.drum::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 5px;
+    background-color: var(--primary-color);
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* Conteúdo das curiosidades */
 .curiosidade-content {
     position: absolute;
