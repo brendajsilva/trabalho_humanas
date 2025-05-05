@@ -278,7 +278,7 @@ body {
 }
 
 .legacy-item h3 {
-    color: var(--primary-color);
+    color: #fff; /* Alterado para branco */
     margin-bottom: 1rem;
 }
 
@@ -618,7 +618,3 @@ body {
     transform: translateY(0);
 }
 
-/* Adicionado estilo para h3 */
-h3 {
-    color: #fff; /* Define a cor dos títulos h3 como branco */
-}
