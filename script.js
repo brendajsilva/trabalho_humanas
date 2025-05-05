@@ -232,3 +232,24 @@ window.addEventListener('scroll', animateFooterTitles);
 
 // Inicializa a animação ao carregar a página
 animateFooterTitles();
+
+// Seleciona todos os títulos
+const titles = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+function animateTitles() {
+    const windowHeight = window.innerHeight;
+
+    titles.forEach(title => {
+        const position = title.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            title.classList.add('visible');
+        }
+    });
+}
+
+// Adiciona o evento de scroll para animar os títulos
+window.addEventListener('scroll', animateTitles);
+
+// Inicializa a animação ao carregar a página
+animateTitles();

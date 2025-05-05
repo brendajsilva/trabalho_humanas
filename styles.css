@@ -681,3 +681,22 @@ body {
     transform: translateY(0);
 }
 
+/* Animação para todos os títulos */
+h1, h2, h3, h4, h5, h6 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, color 0.3s ease;
+}
+
+/* Classe para ativar a animação */
+h1.visible, h2.visible, h3.visible, h4.visible, h5.visible, h6.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mudança de cor ao passar o mouse */
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    color: var(--secondary-color); /* Cor definida no tema */
+    cursor: pointer;
+}
+
