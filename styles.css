@@ -428,6 +428,14 @@ body {
     color: var(--secondary-color); /* Destaque para os títulos */
     margin-bottom: 1rem;
     text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.footer-section h3.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .footer-section p,
@@ -447,13 +455,15 @@ body {
 }
 
 .footer-section a {
+    position: relative;
     color: var(--secondary-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .footer-section a:hover {
     color: #00a3cc; /* Cor mais clara ao passar o mouse */
+    text-shadow: 0 0 8px #00d4ff;
 }
 
 .footer-section.creditos {
@@ -481,6 +491,17 @@ body {
     color: #aaa;
     text-align: center;
     opacity: 0.8;
+}
+
+.footer-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.footer-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Back to Top Button */

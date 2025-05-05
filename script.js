@@ -192,3 +192,23 @@ window.addEventListener('scroll', animateTimeline);
 
 // Inicializa a animação ao carregar a página
 animateTimeline();
+
+// Animação para os elementos do rodapé
+const footerSections = document.querySelectorAll('.footer-section');
+
+function animateFooter() {
+    const windowHeight = window.innerHeight;
+
+    footerSections.forEach(section => {
+        const position = section.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            section.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateFooter);
+
+// Inicializa a animação ao carregar a página
+animateFooter();
