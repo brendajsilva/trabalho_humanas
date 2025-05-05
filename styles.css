@@ -450,15 +450,107 @@ body {
 }
 
 .curiosidade-icon {
-    font-size: 3rem;
-    color: var(--secondary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    transition: opacity 0.3s ease;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
+/* Ícones criados com CSS */
+
+/* Círculo (representa liderança) */
+.curiosidade-icon.circle {
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+}
+
+/* Escudo (representa defesa) */
+.curiosidade-icon.shield {
+    width: 60px;
+    height: 80px;
+    background-color: var(--secondary-color);
+    clip-path: polygon(50% 0%, 100% 30%, 100% 80%, 50% 100%, 0% 80%, 0% 30%);
+}
+
+/* Grupo (representa união) */
+.curiosidade-icon.group {
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    box-shadow: 20px 0 0 var(--secondary-color), -20px 0 0 var(--secondary-color);
+}
+
+/* Livro (representa conhecimento) */
+.curiosidade-icon.book {
+    width: 60px;
+    height: 80px;
+    background-color: var(--secondary-color);
+    position: relative;
+}
+
+.curiosidade-icon.book::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+/* Árvore (representa natureza) */
+.curiosidade-icon.tree {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 60px solid var(--secondary-color);
+    position: relative;
+}
+
+.curiosidade-icon.tree::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 20px;
+    height: 40px;
+    background-color: #654321;
+    transform: translateX(-50%);
+}
+
+/* Coração (representa resistência) */
+.curiosidade-icon.heart {
+    width: 50px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    position: relative;
+    transform: rotate(-45deg);
+    border-radius: 50%;
+}
+
+.curiosidade-icon.heart::before,
+.curiosidade-icon.heart::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+}
+
+.curiosidade-icon.heart::before {
+    top: -25px;
+    left: 0;
+}
+
+.curiosidade-icon.heart::after {
+    top: 0;
+    left: 25px;
+}
+
+/* Conteúdo das curiosidades */
 .curiosidade-content {
     position: absolute;
     top: 0;
