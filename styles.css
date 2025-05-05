@@ -331,7 +331,7 @@ body {
 }
 
 .timeline-content h3 {
-    color: var(--primary-color);
+    color: white;
     margin-bottom: 0.5rem;
 }
 
