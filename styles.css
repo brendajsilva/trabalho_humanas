@@ -229,7 +229,7 @@ body {
 .quote-box blockquote {
     font-style: italic;
     font-size: 1.2rem;
-    color: var(--primary-color);
+    color: #ebe7e7; /* Alterado de um tom escuro para um tom mais claro */
 }
 
 .image-content {
