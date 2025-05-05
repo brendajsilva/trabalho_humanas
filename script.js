@@ -1,0 +1,143 @@
+// Menu Mobile
+const menuButton = document.querySelector('.menu-mobile');
+const navMenu = document.querySelector('.nav-menu');
+
+if (menuButton && navMenu) {
+    menuButton.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+}
+
+// Smooth scroll para links de navegação
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+            // Fecha o menu mobile se estiver aberto
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        }
+    });
+});
+
+// Animação do header ao rolar
+const header = document.querySelector('.header');
+let lastScroll = 0;
+
+// Verifica se o header existe antes de adicionar o evento de scroll
+if (header) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            header.classList.remove('scroll-up');
+            return;
+        }
+        
+        if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+            // Scroll Down
+            header.classList.remove('scroll-up');
+            header.classList.add('scroll-down');
+        } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+            // Scroll Up
+            header.classList.remove('scroll-down');
+            header.classList.add('scroll-up');
+        }
+        lastScroll = currentScroll;
+    });
+}
+
+// Back to Top Button
+const backToTopButton = document.getElementById('back-to-top');
+
+if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.display = 'flex';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Animação de fade-in para elementos quando aparecem na tela
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.section').forEach(section => {
+    section.classList.add('fade-out');
+    observer.observe(section);
+});
+
+// Fecha o menu ao clicar fora
+document.addEventListener('click', (e) => {
+    if (navMenu && navMenu.classList.contains('active') && 
+        e.target instanceof HTMLElement && 
+        !e.target.closest('.nav-menu') && 
+        !e.target.closest('.menu-mobile')) {
+        navMenu.classList.remove('active');
+    }
+});
+
+// Efeito de digitação animada para os nomes dos desenvolvedores
+const nomes = [
+    'Eduardo',
+    'Agatha',
+    'Guilheme',
+    'Brenda',
+    'Arthur Abruzini'
+];
+const devNomes = document.getElementById('dev-nomes');
+let nomeIndex = 0;
+let charIndex = 0;
+let typing = true;
+
+function typeNomes() {
+    if (!devNomes) return;
+    if (typing) {
+        if (charIndex < nomes[nomeIndex].length) {
+            devNomes.innerHTML = nomes.slice(0, nomeIndex).join(', ') + (nomeIndex > 0 ? ', ' : '') + '<span>' + nomes[nomeIndex].slice(0, charIndex + 1) + '</span>';
+            charIndex++;
+            setTimeout(typeNomes, 100);
+        } else {
+            typing = false;
+            setTimeout(typeNomes, 700);
+        }
+    } else {
+        if (nomeIndex < nomes.length - 1) {
+            nomeIndex++;
+            charIndex = 0;
+            typing = true;
+            setTimeout(typeNomes, 400);
+        } else {
+            // Exibe todos os nomes completos
+            devNomes.innerHTML = nomes.join(', ');
+        }
+    }
+}
+
+typeNomes(); 
