@@ -546,89 +546,6 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Seção de Vídeo */
-.video-section {
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-.video-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--secondary-color);
-    position: relative;
-}
-
-.video-section h2::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
-    background-color: var(--secondary-color);
-    margin: 1rem auto;
-}
-
-.video-container {
-    max-width: 900px;
-    margin: 0 auto 2rem;
-    position: relative;
-    overflow: hidden;
-    padding-top: 56.25%; /* Proporção 16:9 */
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.video-summary {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--text-color);
-    text-align: justify;
-}
-
-/* Seção de Curiosidades */
-.curiosidades-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-.curiosidade-item {
-    background-color: var(--light-bg);
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-}
-
-.curiosidade-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.curiosidade-content h3 {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-.curiosidade-content p {
-    font-size: 1rem;
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
 /* Responsividade */
 @media (max-width: 768px) {
     .menu-mobile {
@@ -689,27 +606,6 @@ body {
     .dev-nomes {
         font-size: 1rem;
     }
-
-    .video-container {
-        padding-top: 75%; /* Ajusta a proporção para telas menores */
-    }
-
-    .curiosidades-container {
-        grid-template-columns: 1fr; /* Uma coluna no celular */
-        gap: 1.5rem;
-    }
-
-    .curiosidade-item {
-        padding: 1.5rem;
-    }
-
-    .curiosidade-content h3 {
-        font-size: 1.3rem;
-    }
-
-    .curiosidade-content p {
-        font-size: 0.95rem;
-    }
 }
 
 /* Animações */
@@ -722,4 +618,4 @@ body {
 .fade-in {
     opacity: 1;
     transform: translateY(0);
-}
+} 
