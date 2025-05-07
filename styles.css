@@ -158,7 +158,7 @@ body {
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(78, 204, 163, 0.4);
     background-color: #3db88f;
 }
 
@@ -193,23 +193,15 @@ body {
     margin-bottom: 2rem;
     text-align: center;
     position: relative;
-    overflow: hidden;
 }
 
 .section h2::after {
     content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
+    display: block;
+    width: 50px;
     height: 3px;
     background-color: var(--secondary-color);
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-.section h2:hover::after {
-    width: 100%;
-    left: 0;
+    margin: 1rem auto;
 }
 
 .bg-light {
@@ -399,103 +391,6 @@ body {
     opacity: 0.8;
 }
 
-/* Curiosidades Section */
-.curiosidades-image {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.curiosidades-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Ajustes para a seção de Curiosidades */
-.curiosidades-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-.curiosidade-item {
-    background-color: var(--light-bg);
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-}
-
-.curiosidade-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    background-color: rgba(78, 204, 163, 0.1);
-}
-
-.curiosidade-content h3 {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-.curiosidade-content p {
-    font-size: 1rem;
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-/* Seção de Vídeo */
-.video-section {
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-.video-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--secondary-color);
-    position: relative;
-}
-
-.video-section h2::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
-    background-color: var(--secondary-color);
-    margin: 1rem auto;
-}
-
-.video-container {
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    position: relative;
-    overflow: hidden;
-    padding-top: 56.25%; /* Proporção 16:9 */
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.video-summary {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--text-color);
-    text-align: justify;
-}
-
 /* Footer */
 .footer {
     background-color: var(--primary-color);
@@ -651,33 +546,6 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Efeito de hover nos botões */
-.cta-button, .back-to-top {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta-button:hover, .back-to-top:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Efeito de hover nos links */
-a {
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-a:hover {
-    color: var(--secondary-color);
-    text-shadow: 0 0 10px var(--secondary-color);
-}
-
-/* Efeito de hover nos cartões */
-.curiosidade-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    background-color: rgba(78, 204, 163, 0.1);
-}
-
 /* Responsividade */
 @media (max-width: 768px) {
     .menu-mobile {
@@ -738,23 +606,6 @@ a:hover {
     .dev-nomes {
         font-size: 1rem;
     }
-
-    .curiosidades-container {
-        grid-template-columns: 1fr; /* Uma coluna no celular */
-        gap: 1.5rem;
-    }
-
-    .curiosidade-item {
-        padding: 1.5rem;
-    }
-
-    .curiosidade-content h3 {
-        font-size: 1.3rem;
-    }
-
-    .curiosidade-content p {
-        font-size: 0.95rem;
-    }
 }
 
 /* Animações */
@@ -765,61 +616,6 @@ a:hover {
 }
 
 .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Modal de Vídeo */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.5s ease-out;
-}
-
-.modal-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 80%;
-    background: var(--light-bg);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: var(--text-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-modal:hover {
-    color: var(--secondary-color);
-}
-
-/* Estilos para o iframe do vídeo */
-iframe {
-    border: none;
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 16 / 9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+} 

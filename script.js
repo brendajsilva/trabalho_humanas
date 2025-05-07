@@ -169,23 +169,107 @@ if (backToTop) {
     });
 }
 
-// Modal de Vídeo
-const modal = document.getElementById('video-modal');
-const openModal = document.getElementById('open-modal');
-const closeModal = document.querySelector('.close-modal');
+// Animação para os itens da linha do tempo
+const timelineItems = document.querySelectorAll('.timeline-item');
+const timelineDots = document.querySelectorAll('.timeline-dot');
 
-if (openModal && modal && closeModal) {
-    openModal.addEventListener('click', () => {
-        modal.style.display = 'flex';
-    });
+function animateTimeline() {
+    const windowHeight = window.innerHeight;
 
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    timelineItems.forEach((item, index) => {
+        const position = item.getBoundingClientRect().top;
 
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
+        if (position < windowHeight - 100) {
+            item.classList.add('visible');
+            if (timelineDots[index]) {
+                timelineDots[index].classList.add('visible');
+            }
         }
     });
 }
+
+window.addEventListener('scroll', animateTimeline);
+
+// Inicializa a animação ao carregar a página
+animateTimeline();
+
+// Animação para os elementos do rodapé
+const footerSections = document.querySelectorAll('.footer-section');
+
+function animateFooter() {
+    const windowHeight = window.innerHeight;
+
+    footerSections.forEach(section => {
+        const position = section.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            section.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateFooter);
+
+// Inicializa a animação ao carregar a página
+animateFooter();
+
+// Animação para os títulos do rodapé
+const footerTitles = document.querySelectorAll('.footer-section h3');
+
+function animateFooterTitles() {
+    const windowHeight = window.innerHeight;
+
+    footerTitles.forEach(title => {
+        const position = title.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            title.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateFooterTitles);
+
+// Inicializa a animação ao carregar a página
+animateFooterTitles();
+
+// Seleciona todos os títulos
+const titles = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+function animateTitles() {
+    const windowHeight = window.innerHeight;
+
+    titles.forEach(title => {
+        const position = title.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            title.classList.add('visible');
+        }
+    });
+}
+
+// Adiciona o evento de scroll para animar os títulos
+window.addEventListener('scroll', animateTitles);
+
+// Inicializa a animação ao carregar a página
+animateTitles();
+
+// Animação para os itens de curiosidades
+const curiosidadeItems = document.querySelectorAll('.curiosidade-item');
+
+function animateCuriosidades() {
+    const windowHeight = window.innerHeight;
+
+    curiosidadeItems.forEach(item => {
+        const position = item.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            item.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateCuriosidades);
+
+// Inicializa a animação ao carregar a página
+animateCuriosidades();
