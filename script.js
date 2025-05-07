@@ -108,7 +108,7 @@ const nomes = [
     'Agatha',
     'Guilherme',
     'Brenda',
-    'Arthur Abruzini'
+    'Arthur Abbruzzini'
 ];
 const devNomes = document.getElementById('dev-nomes');
 let nomeIndex = 0;
