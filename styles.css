@@ -117,7 +117,7 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('images/hero-bg.jpg') center/cover no-repeat;
+        url('images/hero-bg.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,44 +142,6 @@ body {
 .hero-content p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: var(--transition);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(78, 204, 163, 0.4);
-    background-color: #3db88f;
-}
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
 }
 
 /* Seções */
@@ -281,7 +243,7 @@ body {
 }
 
 .legacy-item h3 {
-    color: whi
+    color: white;
     margin-bottom: 1rem;
 }
 
@@ -334,7 +296,7 @@ body {
 }
 
 .timeline-content h3 {
-    color: var(--primary-color);
+    color: white;
     margin-bottom: 0.5rem;
 }
 
@@ -403,7 +365,13 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     opacity: 0;
-    animation: fadeInFooter 1.5s 0.5s forwards;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.footer-content.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .footer-section h3 {
@@ -701,6 +669,18 @@ body {
 }
 
 .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animação de deslizar para cima no rodapé */
+.footer-content {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.footer-content.visible {
     opacity: 1;
     transform: translateY(0);
 }

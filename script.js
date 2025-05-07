@@ -273,3 +273,18 @@ window.addEventListener('scroll', animateCuriosidades);
 
 // Inicializa a animação ao carregar a página
 animateCuriosidades();
+
+// Animação de deslizar para cima no rodapé
+const footerContent = document.querySelector('.footer-content');
+
+if (footerContent) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                footerContent.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(footerContent);
+}
