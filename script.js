@@ -273,3 +273,21 @@ window.addEventListener('scroll', animateCuriosidades);
 
 // Inicializa a animação ao carregar a página
 animateCuriosidades();
+
+// Animação de aparição ao rolar a página
+const fadeInElements = document.querySelectorAll('.fade-in');
+
+function handleScroll() {
+    const windowHeight = window.innerHeight;
+
+    fadeInElements.forEach(el => {
+        const position = el.getBoundingClientRect().top;
+
+        if (position < windowHeight - 100) {
+            el.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', handleScroll);
+handleScroll(); // Inicializa a animação ao carregar a página
