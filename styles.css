@@ -580,6 +580,40 @@ body {
     text-align: justify;
 }
 
+/* Estilo para a seção de curiosidades */
+.curiosidades-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Três colunas */
+    gap: 2rem; /* Espaçamento entre os cartões */
+    margin-top: 2rem;
+}
+
+.curiosidade-item {
+    background-color: var(--light-bg); /* Fundo escuro */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar os cartões */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.curiosidade-item:hover {
+    transform: translateY(-5px); /* Eleva o cartão ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra mais forte no hover */
+}
+
+.curiosidade-content h3 {
+    font-size: 1.5rem;
+    color: var(--text-color); /* Títulos em branco */
+    margin-bottom: 1rem;
+}
+
+.curiosidade-content p {
+    font-size: 1rem;
+    color: var(--text-color); /* Texto em branco */
+    line-height: 1.6;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .menu-mobile {
@@ -639,6 +673,23 @@ body {
     }
     .dev-nomes {
         font-size: 1rem;
+    }
+
+    .curiosidades-container {
+        grid-template-columns: 1fr; /* Uma coluna no celular */
+        gap: 1.5rem;
+    }
+
+    .curiosidade-item {
+        padding: 1.5rem;
+    }
+
+    .curiosidade-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .curiosidade-content p {
+        font-size: 0.95rem;
     }
 }
 
