@@ -192,13 +192,22 @@
         <section class="video-section section bg-light">
             <h2>Vídeo Representativo</h2>
             <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/g1BPBObRz5w" 
-                    title="Dandara dos Palmares - Vídeo Representativo" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <!-- Botão para abrir o modal -->
+                <button id="open-modal" class="cta-button">Assistir Vídeo</button>
+
+                <!-- Modal de Vídeo -->
+                <div id="video-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <iframe 
+                            src="https://www.youtube.com/embed/g1BPBObRz5w" 
+                            title="Dandara dos Palmares - Vídeo Representativo" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
             </div>
             <div class="video-summary">
                 <p>
