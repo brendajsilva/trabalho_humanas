@@ -546,6 +546,40 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilo para a seção de vídeo */
+.video-section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.video-container {
+    max-width: 900px; /* Define a largura máxima do vídeo */
+    margin: 0 auto; /* Centraliza o vídeo */
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; /* Proporção 16:9 */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* O vídeo ocupa toda a largura do container */
+    height: 100%; /* O vídeo ocupa toda a altura do container */
+    border: none;
+    border-radius: 10px; /* Bordas arredondadas para um design mais moderno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra ao vídeo */
+}
+
+.video-summary {
+    max-width: 800px;
+    margin: 2rem auto 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    text-align: justify;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .menu-mobile {
@@ -618,4 +652,4 @@ body {
 .fade-in {
     opacity: 1;
     transform: translateY(0);
-} 
+}
