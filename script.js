@@ -292,11 +292,19 @@ if (footerContent) {
 
 // Ativar leitura em voz alta
 document.getElementById('visual-accessibility').addEventListener('click', function () {
+    // Interrompe qualquer fala em andamento antes de iniciar uma nova
+    window.speechSynthesis.cancel();
+
     const textToRead = document.body.innerText; // Texto da página
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.lang = 'pt-BR'; // Define o idioma para português
     synth.speak(utterance);
     alert('Leitura em voz alta ativada.');
+});
+
+// Interrompe a leitura em voz alta ao recarregar a página
+window.addEventListener('beforeunload', () => {
+    window.speechSynthesis.cancel();
 });
 
