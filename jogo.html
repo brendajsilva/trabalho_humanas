@@ -779,6 +779,236 @@
         .accessibility-panel button i {
             font-size: 20px;
         }
+
+        /* Melhorias de responsividade */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+                padding: 15px;
+            }
+
+            .map-container {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .game-area, .map-container {
+                margin: 10px 0;
+            }
+
+            .manual-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .accessibility-panel {
+                right: 5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .text-size-controls {
+                top: 10px;
+                right: 10px;
+            }
+
+            .visual-alerts {
+                width: 90%;
+                max-width: 400px;
+            }
+
+            .manual-step {
+                padding: 10px;
+            }
+
+            .location-image {
+                max-height: 200px;
+            }
+
+            .choices button {
+                width: 100%;
+                margin: 5px 0;
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .accessibility-panel button {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+
+            .map-container {
+                height: 250px;
+            }
+
+            .text-size-controls {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .text-size-button {
+                padding: 8px;
+            }
+
+            .manual-container {
+                padding: 10px;
+            }
+
+            .manual-step {
+                padding: 8px;
+            }
+
+            .step-number {
+                width: 25px;
+                height: 25px;
+                font-size: 14px;
+            }
+
+            .location-image {
+                max-height: 150px;
+            }
+
+            .choices button {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .accessibility-panel {
+                right: 5px;
+            }
+
+            .accessibility-panel button {
+                width: 35px;
+                height: 35px;
+            }
+
+            .accessibility-panel button i {
+                font-size: 16px;
+            }
+        }
+
+        /* Melhorias para telas muito pequenas */
+        @media (max-width: 320px) {
+            .container {
+                padding: 3px;
+            }
+
+            .map-container {
+                height: 200px;
+            }
+
+            .text-size-controls {
+                top: 5px;
+                right: 5px;
+            }
+
+            .manual-container {
+                padding: 5px;
+            }
+
+            .location-image {
+                max-height: 120px;
+            }
+
+            .choices button {
+                padding: 8px;
+                font-size: 12px;
+            }
+        }
+
+        /* Melhorias para telas muito grandes */
+        @media (min-width: 1920px) {
+            .container {
+                max-width: 1800px;
+            }
+
+            .map-container {
+                height: 600px;
+            }
+
+            .location-image {
+                max-height: 400px;
+            }
+
+            .choices button {
+                padding: 15px;
+                font-size: 18px;
+            }
+        }
+
+        /* Melhorias para orientação paisagem em dispositivos móveis */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .map-container {
+                height: 200px;
+            }
+
+            .location-image {
+                max-height: 100px;
+            }
+
+            .manual-container {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+        }
+
+        /* Melhorias para tablets */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+
+            .location-image {
+                max-height: 250px;
+            }
+        }
+
+        /* Melhorias para dispositivos com tela retina */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .location-image {
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+
+        /* Melhorias para dispositivos com tela touch */
+        @media (hover: none) {
+            .choices button {
+                padding: 15px;
+                min-height: 44px;
+            }
+
+            .accessibility-panel button {
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1674,136 +1904,66 @@
             }
         });
 
-        // Melhorar responsividade do mapa
-        function updateMapSize() {
+        // Função para ajustar o layout baseado no tamanho da tela
+        function adjustLayout() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const isLandscape = width > height;
+
+            // Ajustar altura do mapa
             const mapContainer = document.querySelector('.map-container');
-            if (window.innerWidth <= 768) {
-                mapContainer.style.height = '300px';
-            } else {
-                mapContainer.style.height = '500px';
+            if (mapContainer) {
+                if (width <= 480) {
+                    mapContainer.style.height = '250px';
+                } else if (width <= 768) {
+                    mapContainer.style.height = '300px';
+                } else if (width <= 992) {
+                    mapContainer.style.height = '350px';
+                } else if (width >= 1920) {
+                    mapContainer.style.height = '600px';
+                } else {
+                    mapContainer.style.height = '500px';
+                }
+            }
+
+            // Ajustar tamanho das imagens
+            const images = document.querySelectorAll('.location-image');
+            images.forEach(img => {
+                if (width <= 480) {
+                    img.style.maxHeight = '150px';
+                } else if (width <= 768) {
+                    img.style.maxHeight = '200px';
+                } else if (width <= 992) {
+                    img.style.maxHeight = '250px';
+                } else if (width >= 1920) {
+                    img.style.maxHeight = '400px';
+                } else {
+                    img.style.maxHeight = '300px';
+                }
+            });
+
+            // Ajustar posição do painel de acessibilidade
+            const accessibilityPanel = document.querySelector('.accessibility-panel');
+            if (accessibilityPanel) {
+                if (width <= 480) {
+                    accessibilityPanel.style.right = '5px';
+                } else {
+                    accessibilityPanel.style.right = '10px';
+                }
             }
         }
 
-        window.addEventListener('resize', updateMapSize);
-        updateMapSize();
+        // Chamar a função quando a janela for redimensionada
+        window.addEventListener('resize', adjustLayout);
+        window.addEventListener('orientationchange', adjustLayout);
 
-        // Função para atualizar leitores de tela
-        function updateScreenReader(message) {
-            const srUpdate = document.getElementById('screen-reader-updates');
-            srUpdate.textContent = message;
+        // Chamar a função quando a página carregar
+        window.addEventListener('load', adjustLayout);
+
+        // Melhorar a experiência em dispositivos touch
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
         }
-
-        // Função para controle de zoom
-        document.getElementById('zoom-in').addEventListener('click', function() {
-            const currentZoom = map.getZoom();
-            map.setZoom(currentZoom + 1);
-            updateScreenReader(`Zoom aumentado para ${currentZoom + 1}`);
-        });
-
-        document.getElementById('zoom-out').addEventListener('click', function() {
-            const currentZoom = map.getZoom();
-            map.setZoom(currentZoom - 1);
-            updateScreenReader(`Zoom diminuído para ${currentZoom - 1}`);
-        });
-
-        // Função para detectar preferências de redução de movimento
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        if (prefersReducedMotion.matches) {
-            document.body.classList.add('reduce-motion');
-        }
-
-        // Função para detectar preferências de contraste
-        const prefersHighContrast = window.matchMedia('(prefers-contrast: high)');
-        if (prefersHighContrast.matches) {
-            document.body.classList.add('high-contrast');
-        }
-
-        // Melhorar navegação por teclado
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Tab') {
-                document.body.classList.add('keyboard-focus');
-            }
-        });
-
-        document.addEventListener('mousedown', function() {
-            document.body.classList.remove('keyboard-focus');
-        });
-
-        // Atualizar descrições para leitores de tela
-        function updateLocationDescription(location) {
-            const description = `
-                Você está em ${location.name}. 
-                ${location.info}
-                ${location.curiosity ? `Curiosidade: ${location.curiosity.text}` : ''}
-                ${location.item ? `Item disponível: ${location.item.name}` : ''}
-            `;
-            updateScreenReader(description);
-        }
-
-        // Função para controle de tamanho de texto
-        document.getElementById('normal-text').addEventListener('click', function() {
-            document.body.classList.remove('large-text', 'extra-large-text');
-            updateScreenReader('Tamanho de texto normal');
-        });
-
-        document.getElementById('large-text').addEventListener('click', function() {
-            document.body.classList.remove('extra-large-text');
-            document.body.classList.add('large-text');
-            updateScreenReader('Texto grande ativado');
-        });
-
-        document.getElementById('extra-large-text').addEventListener('click', function() {
-            document.body.classList.remove('large-text');
-            document.body.classList.add('extra-large-text');
-            updateScreenReader('Texto extra grande ativado');
-        });
-
-        // Função para alertas visuais
-        function showVisualAlert(message) {
-            const alert = document.getElementById('visual-alert');
-            alert.textContent = message;
-            alert.classList.add('show');
-            setTimeout(() => {
-                alert.classList.remove('show');
-            }, 3000);
-        }
-
-        // Melhorar descrições de imagens
-        document.querySelectorAll('img').forEach(img => {
-            const description = document.createElement('div');
-            description.className = 'image-description';
-            description.textContent = img.alt || 'Imagem descritiva';
-            img.parentNode.insertBefore(description, img.nextSibling);
-        });
-
-        // Melhorar navegação por teclado
-        document.querySelectorAll('button, a').forEach(element => {
-            element.classList.add('tactile-feedback');
-            element.addEventListener('focus', function() {
-                this.classList.add('keyboard-nav-highlight');
-                updateScreenReader(this.getAttribute('aria-label') || this.textContent);
-            });
-            element.addEventListener('blur', function() {
-                this.classList.remove('keyboard-nav-highlight');
-            });
-        });
-
-        // Modificar a função makeChoice para incluir alertas visuais
-        const originalMakeChoice = makeChoice;
-        makeChoice = function(choice) {
-            originalMakeChoice(choice);
-            showVisualAlert(choice.message);
-        };
-
-        // Ativar leitura em voz alta
-        document.getElementById('visual-accessibility').addEventListener('click', function () {
-            const textToRead = document.body.innerText; // Texto da página
-            const synth = window.speechSynthesis;
-            const utterance = new SpeechSynthesisUtterance(textToRead);
-            utterance.lang = 'pt-BR'; // Define o idioma para português
-            synth.speak(utterance);
-            alert('Leitura em voz alta ativada.');
-        });
     </script>
 </body>
 </html>
