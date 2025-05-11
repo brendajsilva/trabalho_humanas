@@ -836,6 +836,7 @@
                 <div class="message" id="message"></div>
                 <div class="location-info" id="location-info"></div>
                 <img id="location-image" class="location-image" src="" alt="Imagem do local">
+                <div id="location-distance"></div>
             </div>
             <div class="map-container">
                 <div id="map"></div>
@@ -1188,8 +1189,12 @@
                 serraCoords[0], serraCoords[1]
             );
             gameState.distanceToSerra = distance;
-            document.getElementById('location-distance').textContent = 
-                `Distância até a Serra da Barriga: ${distance.toFixed(1)} km`;
+
+            const locationDistanceElement = document.getElementById('location-distance');
+            if (locationDistanceElement) {
+                locationDistanceElement.textContent = 
+                    `Distância até a Serra da Barriga: ${distance.toFixed(1)} km`;
+            }
         }
 
         function navigateToSerra() {
