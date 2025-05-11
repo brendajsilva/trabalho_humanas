@@ -188,6 +188,11 @@
             transition: width 0.5s ease;
         }
 
+        .progress-flag {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
         .quick-nav {
             background-color: #e74c3c;
             color: white;
@@ -629,6 +634,117 @@
             clip: rect(0, 0, 0, 0);
             border: 0;
         }
+
+        /* Melhorias para pessoas com deficiência visual */
+        .text-size-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: rgba(52, 73, 94, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .text-size-button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .large-text {
+            font-size: 1.5em;
+        }
+
+        .extra-large-text {
+            font-size: 2em;
+        }
+
+        /* Melhorias para pessoas com deficiência auditiva */
+        .visual-alerts {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        .visual-alerts.show {
+            display: block;
+        }
+
+        /* Melhorias para leitores de tela */
+        .screen-reader-text {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Melhorias para navegação por teclado */
+        .keyboard-nav-highlight {
+            outline: 3px solid #27ae60;
+            outline-offset: 2px;
+        }
+
+        /* Melhorias para contraste */
+        .high-contrast-mode {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .high-contrast-mode button {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #fff;
+        }
+
+        /* Melhorias para descrições de imagens */
+        .image-description {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        /* Melhorias para feedback tátil */
+        .tactile-feedback {
+            position: relative;
+        }
+
+        .tactile-feedback::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #27ae60;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .tactile-feedback:focus::after {
+            transform: scaleX(1);
+        }
     </style>
 </head>
 <body>
@@ -778,6 +894,16 @@
     <button id="toggle-manual" class="toggle-manual" aria-label="Mostrar/Esconder manual de instruções">
         <i class="fas fa-book"></i> Manual
     </button>
+
+    <!-- Controles de tamanho de texto -->
+    <div class="text-size-controls">
+        <button class="text-size-button" id="normal-text" aria-label="Tamanho de texto normal">A</button>
+        <button class="text-size-button" id="large-text" aria-label="Texto grande">A+</button>
+        <button class="text-size-button" id="extra-large-text" aria-label="Texto extra grande">A++</button>
+    </div>
+
+    <!-- Alertas visuais -->
+    <div class="visual-alerts" id="visual-alert"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
@@ -1561,9 +1687,69 @@
 
         // Atualizar descrições para leitores de tela
         function updateLocationDescription(location) {
-            const description = `Você está em ${location.name}. ${location.info}`;
+            const description = `
+                Você está em ${location.name}. 
+                ${location.info}
+                ${location.curiosity ? `Curiosidade: ${location.curiosity.text}` : ''}
+                ${location.item ? `Item disponível: ${location.item.name}` : ''}
+            `;
             updateScreenReader(description);
         }
+
+        // Função para controle de tamanho de texto
+        document.getElementById('normal-text').addEventListener('click', function() {
+            document.body.classList.remove('large-text', 'extra-large-text');
+            updateScreenReader('Tamanho de texto normal');
+        });
+
+        document.getElementById('large-text').addEventListener('click', function() {
+            document.body.classList.remove('extra-large-text');
+            document.body.classList.add('large-text');
+            updateScreenReader('Texto grande ativado');
+        });
+
+        document.getElementById('extra-large-text').addEventListener('click', function() {
+            document.body.classList.remove('large-text');
+            document.body.classList.add('extra-large-text');
+            updateScreenReader('Texto extra grande ativado');
+        });
+
+        // Função para alertas visuais
+        function showVisualAlert(message) {
+            const alert = document.getElementById('visual-alert');
+            alert.textContent = message;
+            alert.classList.add('show');
+            setTimeout(() => {
+                alert.classList.remove('show');
+            }, 3000);
+        }
+
+        // Melhorar descrições de imagens
+        document.querySelectorAll('img').forEach(img => {
+            const description = document.createElement('div');
+            description.className = 'image-description';
+            description.textContent = img.alt || 'Imagem descritiva';
+            img.parentNode.insertBefore(description, img.nextSibling);
+        });
+
+        // Melhorar navegação por teclado
+        document.querySelectorAll('button, a').forEach(element => {
+            element.classList.add('tactile-feedback');
+            element.addEventListener('focus', function() {
+                this.classList.add('keyboard-nav-highlight');
+                updateScreenReader(this.getAttribute('aria-label') || this.textContent);
+            });
+            element.addEventListener('blur', function() {
+                this.classList.remove('keyboard-nav-highlight');
+            });
+        });
+
+        // Modificar a função makeChoice para incluir alertas visuais
+        const originalMakeChoice = makeChoice;
+        makeChoice = function(choice) {
+            originalMakeChoice(choice);
+            showVisualAlert(choice.message);
+        };
     </script>
 </body>
 </html>
