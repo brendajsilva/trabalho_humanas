@@ -1,4 +1,3 @@
-// @ts-nocheck
 // Menu Mobile
 const menuButton = document.querySelector('.menu-mobile');
 const navMenu = document.querySelector('.nav-menu');
