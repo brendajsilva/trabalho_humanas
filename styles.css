@@ -14,7 +14,9 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background: var(--primary-color);
@@ -645,14 +647,13 @@ body {
 
     .nav-menu {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--primary-color);
-        padding: 1rem;
         flex-direction: column;
-        text-align: center;
+        background-color: #0056b3;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        z-index: 1000;
     }
 
     .nav-menu.active {
@@ -660,59 +661,78 @@ body {
     }
 
     .nav-menu li {
-        margin: 1rem 0;
+        margin: 10px 0;
+        text-align: center;
     }
 
-    .content-wrapper,
-    .legacy-content,
-    .gallery,
-    .footer-content {
-        grid-template-columns: 1fr;
+    .nav-menu a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
     }
 
-    .timeline::before {
-        left: 30px;
+    /* Ajuste do botão de acessibilidade */
+    .accessibility-panel {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        flex-direction: row;
+        gap: 10px;
     }
 
-    .timeline-dot {
-        left: 30px;
+    .accessibility-panel button {
+        width: 40px;
+        height: 40px;
     }
 
-    .timeline-content {
-        width: calc(100% - 60px);
-        margin-left: 60px !important;
+    /* Ajuste de imagens */
+    .gallery-item img {
+        width: 100%;
+        height: auto;
     }
 
-    .image.pnghero-content h1 {
-        font-size: 2.5rem;
+    /* Ajuste de seções */
+    .section {
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
     }
 
     .hero-content p {
-        font-size: 1.2rem;
-    }
-
-    .footer-section.creditos {
-        margin-top: 2rem;
-    }
-    .dev-nomes {
         font-size: 1rem;
     }
 
-    .curiosidades-container {
-        grid-template-columns: 1fr; /* Uma coluna no celular */
-        gap: 1.5rem;
+    .cta-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Responsividade para telas muito pequenas (ex.: smartphones) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
     }
 
-    .curiosidade-item {
-        padding: 1.5rem;
+    .hero-content p {
+        font-size: 0.9rem;
     }
 
-    .curiosidade-content h3 {
-        font-size: 1.3rem;
+    .cta-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
     }
 
-    .curiosidade-content p {
-        font-size: 0.95rem;
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-section ul {
+        padding: 0;
+        list-style: none;
     }
 }
 
