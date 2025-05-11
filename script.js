@@ -300,18 +300,3 @@ document.getElementById('visual-accessibility').addEventListener('click', functi
     alert('Leitura em voz alta ativada.');
 });
 
-// Ativar VLibras
-document.getElementById('audio-accessibility').addEventListener('click', function () {
-    if (!document.getElementById('vlibras-script')) {
-        const script = document.createElement('script');
-        script.id = 'vlibras-script';
-        script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'; // URL do script do VLibras
-        script.onload = () => {
-            new window.VLibras.Widget('https://vlibras.gov.br/app'); // Inicializa o widget
-            alert('Tradução para Libras ativada com VLibras.');
-        };
-        document.body.appendChild(script);
-    } else {
-        alert('VLibras já está ativado.');
-    }
-});
