@@ -1818,10 +1818,10 @@
             if (!document.getElementById('vlibras-script')) {
                 const script = document.createElement('script');
                 script.id = 'vlibras-script';
-                script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+                script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'; // URL do script do VLibras
                 script.onload = () => {
-                    new window.VLibras.Widget('https://vlibras.gov.br/app');
-                    alert('Tradução para Libras ativada.');
+                    new window.VLibras.Widget('https://vlibras.gov.br/app'); // Inicializa o widget
+                    alert('Tradução para Libras ativada com sucesso.');
                 };
                 document.body.appendChild(script);
             } else {
