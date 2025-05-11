@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Menu Mobile
 const menuButton = document.querySelector('.menu-mobile');
 const navMenu = document.querySelector('.nav-menu');
@@ -288,3 +289,29 @@ if (footerContent) {
 
     observer.observe(footerContent);
 }
+
+// Ativar leitura em voz alta
+document.getElementById('visual-accessibility').addEventListener('click', function () {
+    const textToRead = document.body.innerText; // Texto da página
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.lang = 'pt-BR'; // Define o idioma para português
+    synth.speak(utterance);
+    alert('Leitura em voz alta ativada.');
+});
+
+// Ativar VLibras
+document.getElementById('audio-accessibility').addEventListener('click', function () {
+    if (!document.getElementById('vlibras-script')) {
+        const script = document.createElement('script');
+        script.id = 'vlibras-script';
+        script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'; // URL do script do VLibras
+        script.onload = () => {
+            new window.VLibras.Widget('https://vlibras.gov.br/app'); // Inicializa o widget
+            alert('Tradução para Libras ativada com VLibras.');
+        };
+        document.body.appendChild(script);
+    } else {
+        alert('VLibras já está ativado.');
+    }
+});
