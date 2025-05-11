@@ -21,3 +21,24 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Ativar leitura em voz alta
+const audioAccessibilityButton = document.getElementById('audio-accessibility');
+if (audioAccessibilityButton) {
+    audioAccessibilityButton.addEventListener('click', function () {
+        // Interrompe qualquer fala em andamento antes de iniciar uma nova
+        window.speechSynthesis.cancel();
+
+        const textToRead = document.body.innerText; // Texto da página
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        utterance.lang = 'pt-BR'; // Define o idioma para português
+        synth.speak(utterance);
+        alert('Leitura em voz alta ativada.');
+    });
+}
+
+// Interromper leitura ao recarregar a página
+window.addEventListener('beforeunload', () => {
+    window.speechSynthesis.cancel();
+});
+
