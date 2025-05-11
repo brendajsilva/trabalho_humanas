@@ -421,9 +421,230 @@
                 padding: 10px 0;
             }
         }
+
+        /* Estilos para o manual de instruções */
+        .manual-container {
+            background-color: #34495e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .manual-container h2 {
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        .manual-steps {
+            display: grid;
+            gap: 15px;
+        }
+
+        .manual-step {
+            background-color: #2c3e50;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: #27ae60;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Melhorias de acessibilidade */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Melhorias para dispositivos móveis */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .manual-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 auto;
+            }
+
+            .game-area, .map-container {
+                margin: 10px 0;
+            }
+
+            .choices button {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .location-image {
+                max-height: 200px;
+            }
+        }
+
+        /* Melhorias de contraste e legibilidade */
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .high-contrast button {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #fff;
+        }
+
+        /* Suporte para leitores de tela */
+        [role="button"],
+        [role="link"] {
+            cursor: pointer;
+        }
+
+        /* Melhorias para navegação por teclado */
+        button:focus,
+        a:focus {
+            outline: 3px solid #27ae60;
+            outline-offset: 2px;
+        }
+
+        /* Melhorias adicionais para acessibilidade */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #27ae60;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Melhorias para zoom */
+        .zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .zoom-button {
+            background: #34495e;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Melhorias para dispositivos móveis */
+        @media (max-width: 480px) {
+            .manual-container {
+                padding: 10px;
+            }
+
+            .manual-step {
+                padding: 10px;
+            }
+
+            .step-number {
+                width: 25px;
+                height: 25px;
+                font-size: 14px;
+            }
+
+            .zoom-controls {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .zoom-button {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+
+        /* Melhorias para pessoas com daltonismo */
+        .colorblind-friendly {
+            --primary-color: #0000FF;
+            --secondary-color: #FF0000;
+            --accent-color: #00FF00;
+        }
+
+        /* Melhorias para pessoas com epilepsia */
+        .reduce-motion {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        /* Melhorias para navegação por teclado */
+        .keyboard-focus {
+            outline: 3px solid #27ae60;
+            outline-offset: 2px;
+        }
+
+        /* Melhorias para leitores de tela */
+        .aria-live {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <div class="zoom-controls">
+        <button class="zoom-button" id="zoom-in" aria-label="Aumentar zoom">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button class="zoom-button" id="zoom-out" aria-label="Diminuir zoom">
+            <i class="fas fa-minus"></i>
+        </button>
+    </div>
+
+    <div class="aria-live" aria-live="polite" id="screen-reader-updates"></div>
+
     <header class="header">
         <nav class="nav-container">
             <div class="logo">Dandara dos Palmares</div>
@@ -512,6 +733,51 @@
             <!-- Será preenchido via JavaScript -->
         </div>
     </div>
+
+    <!-- Adicionar botão de alto contraste -->
+    <button id="contrast-toggle" class="contrast-toggle" aria-label="Alternar alto contraste">
+        <i class="fas fa-adjust"></i>
+    </button>
+
+    <!-- Adicionar manual de instruções -->
+    <div class="manual-container" id="manual">
+        <h2>Manual de Instruções</h2>
+        <div class="manual-steps">
+            <div class="manual-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Início da Jornada</h3>
+                    <p>Escolha seu ponto de partida: Maceió, União dos Palmares ou Rio Mundaú. Você também pode começar da sua localização atual.</p>
+                </div>
+            </div>
+            <div class="manual-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Navegação</h3>
+                    <p>Use os botões de navegação para se mover entre os locais. O mapa mostrará seu progresso em tempo real.</p>
+                </div>
+            </div>
+            <div class="manual-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Coleta de Itens</h3>
+                    <p>Colete itens especiais em cada local para enriquecer sua jornada e aprender mais sobre a história.</p>
+                </div>
+            </div>
+            <div class="manual-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Objetivo</h3>
+                    <p>Chegue à Serra da Barriga, local histórico do Quilombo dos Palmares, e aprenda sobre sua importância.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicionar botão para mostrar/esconder manual -->
+    <button id="toggle-manual" class="toggle-manual" aria-label="Mostrar/Esconder manual de instruções">
+        <i class="fas fa-book"></i> Manual
+    </button>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
@@ -1168,6 +1434,7 @@
                 choicesDiv.appendChild(btn);
             }
             updateRoutePanel();
+            updateLocationDescription(step);
         }
 
         function updateRoutePanel() {
@@ -1204,6 +1471,99 @@
         }
 
         window.onload = updateRouteStep;
+
+        // Função para alternar alto contraste
+        document.getElementById('contrast-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+            const isHighContrast = document.body.classList.contains('high-contrast');
+            localStorage.setItem('highContrast', isHighContrast);
+        });
+
+        // Função para mostrar/esconder manual
+        document.getElementById('toggle-manual').addEventListener('click', function() {
+            const manual = document.getElementById('manual');
+            manual.style.display = manual.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Verificar preferências salvas
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('highContrast') === 'true') {
+                document.body.classList.add('high-contrast');
+            }
+        });
+
+        // Melhorar navegação por teclado
+        document.querySelectorAll('button, a').forEach(element => {
+            element.setAttribute('tabindex', '0');
+        });
+
+        // Adicionar descrições para leitores de tela
+        document.querySelectorAll('img').forEach(img => {
+            if (!img.alt) {
+                img.alt = 'Imagem descritiva';
+            }
+        });
+
+        // Melhorar responsividade do mapa
+        function updateMapSize() {
+            const mapContainer = document.querySelector('.map-container');
+            if (window.innerWidth <= 768) {
+                mapContainer.style.height = '300px';
+            } else {
+                mapContainer.style.height = '500px';
+            }
+        }
+
+        window.addEventListener('resize', updateMapSize);
+        updateMapSize();
+
+        // Função para atualizar leitores de tela
+        function updateScreenReader(message) {
+            const srUpdate = document.getElementById('screen-reader-updates');
+            srUpdate.textContent = message;
+        }
+
+        // Função para controle de zoom
+        document.getElementById('zoom-in').addEventListener('click', function() {
+            const currentZoom = map.getZoom();
+            map.setZoom(currentZoom + 1);
+            updateScreenReader(`Zoom aumentado para ${currentZoom + 1}`);
+        });
+
+        document.getElementById('zoom-out').addEventListener('click', function() {
+            const currentZoom = map.getZoom();
+            map.setZoom(currentZoom - 1);
+            updateScreenReader(`Zoom diminuído para ${currentZoom - 1}`);
+        });
+
+        // Função para detectar preferências de redução de movimento
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (prefersReducedMotion.matches) {
+            document.body.classList.add('reduce-motion');
+        }
+
+        // Função para detectar preferências de contraste
+        const prefersHighContrast = window.matchMedia('(prefers-contrast: high)');
+        if (prefersHighContrast.matches) {
+            document.body.classList.add('high-contrast');
+        }
+
+        // Melhorar navegação por teclado
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-focus');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-focus');
+        });
+
+        // Atualizar descrições para leitores de tela
+        function updateLocationDescription(location) {
+            const description = `Você está em ${location.name}. ${location.info}`;
+            updateScreenReader(description);
+        }
     </script>
 </body>
 </html>
