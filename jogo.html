@@ -482,30 +482,91 @@
         /* Melhorias para dispositivos móveis */
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Uma coluna no layout */
                 padding: 10px;
-            }
-
-            .manual-step {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .step-number {
-                margin: 0 auto;
             }
 
             .game-area, .map-container {
                 margin: 10px 0;
+                padding: 10px;
             }
 
             .choices button {
-                width: 100%;
+                width: 100%; /* Botões ocupam toda a largura */
                 margin: 5px 0;
+                padding: 12px;
+                font-size: 16px;
             }
 
             .location-image {
-                max-height: 200px;
+                max-height: 200px; /* Ajusta a altura máxima da imagem */
+            }
+
+            .manual-step {
+                padding: 10px;
+            }
+
+            .accessibility-panel {
+                right: 5px; /* Ajusta a posição do painel de acessibilidade */
+            }
+
+            .progress-bar {
+                height: 16px; /* Ajusta a altura da barra de progresso */
+            }
+
+            .progress-flag {
+                font-size: 1.1rem; /* Ajusta o tamanho do ícone da bandeira */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+
+            .map-container {
+                height: 250px; /* Reduz a altura do mapa */
+            }
+
+            .location-image {
+                max-height: 150px; /* Reduz a altura máxima da imagem */
+            }
+
+            .choices button {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .accessibility-panel {
+                right: 5px;
+            }
+
+            .accessibility-panel button {
+                width: 35px;
+                height: 35px;
+            }
+
+            .accessibility-panel button i {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .container {
+                padding: 3px;
+            }
+
+            .map-container {
+                height: 200px; /* Ajusta a altura do mapa para telas muito pequenas */
+            }
+
+            .location-image {
+                max-height: 120px; /* Ajusta a altura máxima da imagem */
+            }
+
+            .choices button {
+                padding: 8px;
+                font-size: 12px;
             }
         }
 
@@ -813,41 +874,40 @@
 
         @media (max-width: 768px) {
             .container {
+                grid-template-columns: 1fr; /* Uma coluna no layout */
                 padding: 10px;
             }
 
-            .map-container {
-                height: 300px;
+            .game-area, .map-container {
+                margin: 10px 0;
+                padding: 10px;
             }
 
-            .text-size-controls {
-                top: 10px;
-                right: 10px;
+            .choices button {
+                width: 100%; /* Botões ocupam toda a largura */
+                margin: 5px 0;
+                padding: 12px;
+                font-size: 16px;
             }
 
-            .visual-alerts {
-                width: 90%;
-                max-width: 400px;
+            .location-image {
+                max-height: 200px; /* Ajusta a altura máxima da imagem */
             }
 
             .manual-step {
                 padding: 10px;
             }
 
-            .location-image {
-                max-height: 200px;
+            .accessibility-panel {
+                right: 5px; /* Ajusta a posição do painel de acessibilidade */
             }
 
-            .choices button {
-                width: 100%;
-                margin: 5px 0;
-                padding: 12px;
-                font-size: 16px;
+            .progress-bar {
+                height: 16px; /* Ajusta a altura da barra de progresso */
             }
 
-            .accessibility-panel button {
-                width: 40px;
-                height: 40px;
+            .progress-flag {
+                font-size: 1.1rem; /* Ajusta o tamanho do ícone da bandeira */
             }
         }
 
@@ -857,34 +917,11 @@
             }
 
             .map-container {
-                height: 250px;
-            }
-
-            .text-size-controls {
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            .text-size-button {
-                padding: 8px;
-            }
-
-            .manual-container {
-                padding: 10px;
-            }
-
-            .manual-step {
-                padding: 8px;
-            }
-
-            .step-number {
-                width: 25px;
-                height: 25px;
-                font-size: 14px;
+                height: 250px; /* Reduz a altura do mapa */
             }
 
             .location-image {
-                max-height: 150px;
+                max-height: 150px; /* Reduz a altura máxima da imagem */
             }
 
             .choices button {
@@ -906,27 +943,17 @@
             }
         }
 
-        /* Melhorias para telas muito pequenas */
         @media (max-width: 320px) {
             .container {
                 padding: 3px;
             }
 
             .map-container {
-                height: 200px;
-            }
-
-            .text-size-controls {
-                top: 5px;
-                right: 5px;
-            }
-
-            .manual-container {
-                padding: 5px;
+                height: 200px; /* Ajusta a altura do mapa para telas muito pequenas */
             }
 
             .location-image {
-                max-height: 120px;
+                max-height: 120px; /* Ajusta a altura máxima da imagem */
             }
 
             .choices button {
