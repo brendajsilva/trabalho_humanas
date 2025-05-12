@@ -602,6 +602,37 @@ body {
     background-color: #3db88f; /* Cor mais clara no hover */
 }
 
+/* Painel de Acessibilidade */
+.accessibility-panel {
+    position: fixed;
+    bottom: 80px; /* Ajuste para ficar acima do botão "Voltar ao Topo" */
+    right: 20px;
+    z-index: 1000;
+}
+
+.accessibility-panel button {
+    background-color: #4ecca3; /* Cor de fundo */
+    color: #1a1a2e; /* Cor do ícone */
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+.accessibility-panel button:hover {
+    background-color: #3db88f; /* Cor mais clara no hover */
+}
+
+.accessibility-panel button i {
+    font-size: 20px;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .menu-mobile {
