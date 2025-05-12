@@ -244,29 +244,10 @@
     <!-- Botão de Acessibilidade Auditiva -->
     <div class="accessibility-panel">
         <button id="audio-accessibility" aria-label="Ativar acessibilidade auditiva">
-            <i class="fas fa-sign-language"></i>
+            <i class="fas fa-volume-up"></i> <!-- Ícone atualizado para indicar áudio -->
         </button>
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Ativar leitura em voz alta
-        document.getElementById('audio-accessibility').addEventListener('click', function () {
-            // Interrompe qualquer fala em andamento antes de iniciar uma nova
-            window.speechSynthesis.cancel();
-
-            const textToRead = document.body.innerText; // Texto da página
-            const synth = window.speechSynthesis;
-            const utterance = new SpeechSynthesisUtterance(textToRead);
-            utterance.lang = 'pt-BR'; // Define o idioma para português
-            synth.speak(utterance);
-            alert('Leitura em voz alta ativada.');
-        });
-
-        // Interromper leitura ao recarregar a página
-        window.addEventListener('beforeunload', () => {
-            window.speechSynthesis.cancel();
-        });
-    </script>
 </body>
 </html>

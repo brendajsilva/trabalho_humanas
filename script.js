@@ -288,3 +288,35 @@ if (footerContent) {
 
     observer.observe(footerContent);
 }
+
+// Ativar leitura em voz alta
+const audioAccessibilityButton = document.getElementById('audio-accessibility');
+
+if (audioAccessibilityButton) {
+    audioAccessibilityButton.addEventListener('click', function () {
+        // Interrompe qualquer fala em andamento antes de iniciar uma nova
+        window.speechSynthesis.cancel();
+
+        // Captura o texto visível na página
+        const textToRead = document.body.innerText.trim();
+        if (textToRead) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'pt-BR'; // Define o idioma para português
+            utterance.rate = 1; // Velocidade normal
+            utterance.pitch = 1; // Tom normal
+
+            // Inicia a leitura
+            synth.speak(utterance);
+
+            alert('Leitura em voz alta ativada.');
+        } else {
+            alert('Nenhum texto encontrado para leitura.');
+        }
+    });
+
+    // Interromper leitura ao recarregar a página
+    window.addEventListener('beforeunload', () => {
+        window.speechSynthesis.cancel();
+    });
+}
