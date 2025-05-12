@@ -320,3 +320,12 @@ if (audioAccessibilityButton) {
         window.speechSynthesis.cancel();
     });
 }
+
+function updateLocationDescription(description) {
+    const descriptionElement = document.getElementById('location-description');
+    if (descriptionElement) {
+        descriptionElement.textContent = description;
+    } else {
+        console.error('Elemento com ID "location-description" não encontrado.');
+    }
+}
